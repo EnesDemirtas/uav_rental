@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'phonenumbers',
     'api',
     'users',
-    'uavs'
+    'uavs',
+    'rentals'
 ]
 
 MIDDLEWARE = [

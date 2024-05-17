@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import UAV
+from .serializers import UAVSerializer
 
-# Create your views here.
+
+class UAVViewSet(viewsets.ModelViewSet):
+    queryset = UAV.objects.all()
+    serializer_class = UAVSerializer

@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'knox',
     'phonenumbers',
     'api',
-    'users'
+    'users',
+    'uavs'
 ]
 
 MIDDLEWARE = [

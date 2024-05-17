@@ -1,3 +1,14 @@
 from django.db import models
 
-# Create your models here.
+
+class UAV(models.Model):
+    brand = models.CharField(max_length=255)
+    model = models.CharField(max_length=255)
+    weight = models.FloatField()
+    category = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+def __str__(self):
+    return self.brand + " " + self.model

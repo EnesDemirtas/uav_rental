@@ -1,0 +1,5 @@
+Please confirm your email address by going to the following link:
+
+http://localhost:8000/profile/confirm_email?token_id={{token_id}}&user_id={{user_id}}
+
+Verification code is valid for 5 minutes.

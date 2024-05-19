@@ -3,6 +3,10 @@
 ## Description
 Case study project for a company.
 
+**Note:** I received the assignment on Friday afternoon and opened it immediately. I could not 
+have guessed that the countdown would start instantly. I couldn't focus on the project enough 
+because I had important plans over the weekend. I'm sorry for that.
+
 **Note:** I used one of my previous works, [UserMgmtService](https://github.com/EnesDemirtas/UserMgmtService)
 in this project. It was not for a company or sth. I wanted to develop an e-commerce project 
 using microservice architecture, different languages/technologies for each service. However, I had

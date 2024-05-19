@@ -1,0 +1,971 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /api/user/:
+    get:
+      operationId: listget_user_by_tokens
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/profile/:
+    get:
+      operationId: retrieveCustomUser
+      description: Manage the authenticated user
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateCustomUser
+      description: Manage the authenticated user
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateCustomUser
+      description: Manage the authenticated user
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+      tags:
+      - api
+  /api/profile/addresses/:
+    get:
+      operationId: listCustomUserAddresses
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomUserAddress'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createCustomUserAddress
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUserAddress'
+          description: ''
+      tags:
+      - api
+  /api/profile/addresses/{id}/:
+    get:
+      operationId: retrieveCustomUserAddress
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this custom user address.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUserAddress'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateCustomUserAddress
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this custom user address.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUserAddress'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateCustomUserAddress
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this custom user address.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserAddress'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUserAddress'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyCustomUserAddress
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this custom user address.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/profile/confirm_email/:
+    get:
+      operationId: listConfirmEmails
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/uavs/:
+    get:
+      operationId: listUAVs
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UAV'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createUAV
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UAV'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UAV'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UAV'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UAV'
+          description: ''
+      tags:
+      - api
+  /api/uavs/{id}/:
+    get:
+      operationId: retrieveUAV
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this uav.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UAV'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateUAV
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this uav.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UAV'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UAV'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UAV'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UAV'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateUAV
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this uav.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UAV'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UAV'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UAV'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UAV'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyUAV
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this uav.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/uavs/rented:
+    get:
+      operationId: listget_rented_uavs
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/rentals/:
+    get:
+      operationId: listRentalRecords
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RentalRecord'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createRentalRecord
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RentalRecord'
+          description: ''
+      tags:
+      - api
+  /api/rentals/{id}/:
+    get:
+      operationId: retrieveRentalRecord
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this rental record.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RentalRecord'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateRentalRecord
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this rental record.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RentalRecord'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateRentalRecord
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this rental record.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RentalRecord'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RentalRecord'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyRentalRecord
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A UUID string identifying this rental record.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/rental/:
+    get:
+      operationId: listget_rent_pages
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/register/form:
+    get:
+      operationId: listregisters
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/login/form:
+    get:
+      operationId: listlogins
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/home/:
+    get:
+      operationId: listhomes
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/register/:
+    post:
+      operationId: createCustomUser
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUser'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+      tags:
+      - api
+  /api/login/:
+    post:
+      operationId: createLogin
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/logout/:
+    post:
+      operationId: createLogout
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/logoutall/:
+    post:
+      operationId: createLogoutAll
+      description: 'Log the user out of all sessions
+
+        I.E. deletes all auth tokens for the user'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/profile/password_change/:
+    post:
+      operationId: createchange_password
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+  /api/profile/password_reset/validate_token/:
+    post:
+      operationId: createResetToken
+      description: An Api View which provides a method to verify that a token is valid
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetToken'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResetToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResetToken'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResetToken'
+          description: ''
+      tags:
+      - api
+  /api/profile/password_reset/confirm/:
+    post:
+      operationId: createPasswordToken
+      description: An Api View which provides a method to reset a password based on
+        a unique token
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordToken'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordToken'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordToken'
+          description: ''
+      tags:
+      - api
+  /api/profile/password_reset/:
+    post:
+      operationId: createEmail
+      description: 'An Api View which provides a method to request a password reset
+        token based on an e-mail address
+
+
+        Sends a signal reset_password_token_created when a reset token was created'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Email'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Email'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Email'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+          description: ''
+      tags:
+      - api
+  /api/profile/send_email_confirmation/:
+    post:
+      operationId: createSendEmailConfirmationToken
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+          application/x-www-form-urlencoded:
+            schema: {}
+          multipart/form-data:
+            schema: {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema: {}
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    CustomUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+          minLength: 6
+        name:
+          type: string
+          maxLength: 150
+        phone:
+          type: string
+          nullable: true
+          maxLength: 128
+        is_staff:
+          type: boolean
+        is_active:
+          type: boolean
+        is_verified:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                readOnly: true
+              user:
+                type: integer
+              street:
+                type: string
+                maxLength: 150
+              city:
+                type: string
+                maxLength: 150
+              state:
+                type: string
+                maxLength: 150
+              zip_code:
+                type: string
+                maxLength: 10
+            required:
+            - user
+            - street
+            - city
+            - state
+            - zip_code
+          readOnly: true
+      required:
+      - email
+      - password
+    CustomUserAddress:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          type: integer
+        street:
+          type: string
+          maxLength: 150
+        city:
+          type: string
+          maxLength: 150
+        state:
+          type: string
+          maxLength: 150
+        zip_code:
+          type: string
+          maxLength: 10
+      required:
+      - user
+      - street
+      - city
+      - state
+      - zip_code
+    UAV:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        brand:
+          type: string
+          maxLength: 255
+        model:
+          type: string
+          maxLength: 255
+        weight:
+          type: number
+        category:
+          type: string
+          maxLength: 255
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - brand
+      - model
+      - weight
+      - category
+    RentalRecord:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        start_datetime:
+          type: string
+          format: date-time
+        end_datetime:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        user:
+          type: integer
+        uav:
+          type: string
+      required:
+      - start_datetime
+      - end_datetime
+      - user
+      - uav
+    ResetToken:
+      type: object
+      properties:
+        token:
+          type: string
+      required:
+      - token
+    PasswordToken:
+      type: object
+      properties:
+        password:
+          type: string
+        token:
+          type: string
+      required:
+      - password
+      - token
+    Email:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email

@@ -2,13 +2,15 @@ from django.urls import path, include
 from knox import views as knox_views
 from rest_framework.routers import DefaultRouter
 
+from . import views
 from .views import (CreateUserView, LoginView, ManageUserView, CustomUserAddressViewSet, change_password,
-                    SendEmailConfirmationTokenAPIView, ConfirmEmailView)
+                    SendEmailConfirmationTokenAPIView, ConfirmEmailView, get_user_by_token)
 
 addresses_router = DefaultRouter()
 addresses_router.register(r'addresses', CustomUserAddressViewSet)
 
 urlpatterns = [
+    path('user/', get_user_by_token, name='get_token'),
     path('register/', CreateUserView.as_view(), name='register'),
     path('profile/', ManageUserView.as_view(), name='profile'),
     path('login/', LoginView.as_view(), name='knox_login'),

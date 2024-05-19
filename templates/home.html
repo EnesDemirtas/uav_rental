@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAV Rental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Welcome to the Home Page! <span id="name"></span></h1>
+
+            <div class="container mt-5">
+        <h2 class="mb-4">UAVs</h2>
+        <input class="form-control mb-4" id="tableSearch" type="text" placeholder="Type to search...">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Category</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('http://localhost:8000/api/uavs/', {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        let table = document.getElementById('tableBody')
+                        for (let i = 0; i < data.length; i++) {
+                            let uav = data[i]
+                            let html = `
+                                    <tr>
+                                        <td>${uav.brand}</td>
+                                        <td>${uav.model}</td>
+                                        <td>${uav.category}</td>
+                                        <td>${uav.weight}</td>
+                                    </tr>
+                            `;
+                            table.innerHTML += html;
+                        }
+                    }
+                });
+            fetch('http://localhost:8000/api/user/?token=' + sessionStorage.getItem('token'), {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('name').innerText = data.name;
+                })
+        })
+
+
+
+        document.getElementById('tableSearch').addEventListener('keyup', function() {
+    let searchText = this.value.toLowerCase();
+    let tableRows = document.querySelectorAll('#tableBody tr');
+
+    tableRows.forEach(function(row) {
+        let rowText = row.textContent.toLowerCase();
+        if (rowText.includes(searchText)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -2,7 +2,9 @@
 from datetime import timedelta
 
 from django.contrib.auth import login, update_session_auth_hash
+from django.db import connection
 from django.utils import timezone
+from django.shortcuts import redirect, render
 # knox imports
 from knox.views import LoginView as KnoxLoginView
 # rest_framework imports
@@ -99,3 +101,17 @@ def change_password(request):
                 return Response({'message': 'Password changed successfully.'}, status=status.HTTP_200_OK)
             return Response({'error': 'Incorrect old password.'}, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def get_user_by_token(request):
+    token_key = request.GET.get('token', None)[0:8]
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT user_id FROM knox_authtoken WHERE token_key = %s", [token_key])
+        row = cursor.fetchone()
+        user_id = row[0]
+
+        cursor.execute("SELECT name FROM users_customuser WHERE id = %s", [user_id])
+        row = cursor.fetchone()
+        name = row[0]
+        return Response(data={'name': name}, status=200)

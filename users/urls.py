@@ -4,12 +4,13 @@ from rest_framework.routers import DefaultRouter
 
 from . import views
 from .views import (CreateUserView, LoginView, ManageUserView, CustomUserAddressViewSet, change_password,
-                    SendEmailConfirmationTokenAPIView, ConfirmEmailView, get_user_by_token)
+                    SendEmailConfirmationTokenAPIView, ConfirmEmailView, get_user_by_token, get_users)
 
 addresses_router = DefaultRouter()
 addresses_router.register(r'addresses', CustomUserAddressViewSet)
 
 urlpatterns = [
+    path('users/', get_users, name='get_users'),
     path('user/', get_user_by_token, name='get_token'),
     path('register/', CreateUserView.as_view(), name='register'),
     path('profile/', ManageUserView.as_view(), name='profile'),

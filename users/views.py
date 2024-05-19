@@ -115,3 +115,12 @@ def get_user_by_token(request):
         row = cursor.fetchone()
         name = row[0]
         return Response(data={'user_id': user_id, 'name': name}, status=200)
+
+@api_view(['GET'])
+def get_users(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM users_customuser")
+        rows = cursor.fetchall()
+        columns = [col[0] for col in cursor.description]
+        result = [dict(zip(columns, row)) for row in rows]
+        return Response(data=result, status=200)

@@ -86,3 +86,5 @@ Endpoints can be found in localhost:8000/api/schema.json.
 
 Postman Collection and Bruno Collection (I prefer this one) can be found under
 the [api_collections](https://github.com/EnesDemirtas/uav_rental/tree/main/api_collections) folder. 
+
+![Home Page](home.png)

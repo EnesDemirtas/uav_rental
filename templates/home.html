@@ -20,9 +20,19 @@
                     <th>Model</th>
                     <th>Category</th>
                     <th>Weight</th>
+                    <th>Rent</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
+                {% for uav in uavs %}
+                    <tr>
+                        <td>{{ uav.brand }}</td>
+                        <td>{{ uav.model }}</td>
+                        <td>{{ uav.category }}</td>
+                        <td>{{ uav.weight }}</td>
+                        <td><button id="{{ uav.id }}" class="btn btn-success w-100 rent_button">Rent</button></td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -30,27 +40,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            fetch('http://localhost:8000/api/uavs/', {
-                method: 'GET'
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.length > 0) {
-                        let table = document.getElementById('tableBody')
-                        for (let i = 0; i < data.length; i++) {
-                            let uav = data[i]
-                            let html = `
-                                    <tr>
-                                        <td>${uav.brand}</td>
-                                        <td>${uav.model}</td>
-                                        <td>${uav.category}</td>
-                                        <td>${uav.weight}</td>
-                                    </tr>
-                            `;
-                            table.innerHTML += html;
-                        }
-                    }
-                });
             fetch('http://localhost:8000/api/user/?token=' + sessionStorage.getItem('token'), {
                 method: 'GET',
                 headers: {
@@ -59,12 +48,41 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     document.getElementById('name').innerText = data.name;
                 })
+
+            const rentButtons = document.getElementsByClassName('rent_button');
+            console.log(rentButtons)
+            for (let i = 0; i < rentButtons.length; i++) {
+                const rentButton = rentButtons[i];
+                rentButton.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    window.location.href = 'http://localhost:8000/api/rental/?uav_id=' + rentButton.id
+                })
+            }
+
+            fetch('http://localhost:8000/api/uavs/rented', {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.data && data.data.length > 0) {
+                    console.log("rented uavs:", data.data);
+                    // To log the first UAV:
+                    console.log("First rented UAV:", data.data[0]);
+
+                    for (let i = 0; i < data.data.length; i++) {
+                        const button = document.getElementById(data.data[i].uav_id)
+                        button.disabled = true
+                        button.className = "btn btn-danger w-100"
+                        button.innerText = "Rented"
+                    }
+                    }
+    })
+    .catch(error => {
+        console.error("Error fetching rented UAVs:", error);
+    });
         })
-
-
 
         document.getElementById('tableSearch').addEventListener('keyup', function() {
     let searchText = this.value.toLowerCase();

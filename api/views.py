@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 
+from uavs.models import UAV
+
 
 @api_view(['GET'])
 def register(request):
@@ -14,4 +16,7 @@ def login(request):
 
 @api_view(['GET'])
 def home(request):
-    return render(request, 'home.html')
+    uavs = UAV.objects.all()
+    return render(request, 'home.html', context={
+        'uavs': uavs
+    })

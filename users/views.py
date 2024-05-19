@@ -114,4 +114,4 @@ def get_user_by_token(request):
         cursor.execute("SELECT name FROM users_customuser WHERE id = %s", [user_id])
         row = cursor.fetchone()
         name = row[0]
-        return Response(data={'name': name}, status=200)
+        return Response(data={'user_id': user_id, 'name': name}, status=200)
